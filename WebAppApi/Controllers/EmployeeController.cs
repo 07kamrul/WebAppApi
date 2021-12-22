@@ -22,7 +22,8 @@ namespace WebAppApi.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            string query = @"SELECT EmployeeId, EmployeeName, Department, convert(varchar(10),DateOfJoining,120) as DateOfJoining, 
+            string query = @"SELECT EmployeeId, EmployeeName, Department,
+                            convert(varchar(10),DateOfJoining,120) as DateOfJoining, 
                             PhotoFileName FROM dbo.Employee";
 
             DataTable table = new DataTable();
@@ -90,10 +91,9 @@ namespace WebAppApi.Controllers
         public JsonResult Put(Employee emp)
         {
             string query = @" update dbo.Employee set 
-                              EmployeeName = '" + emp.EmployeeName + @"',
-                              Department = '" + emp.Department + @"',
-                              DateOfJoining = '" + emp.DateOfJoining + @"',
-                              PhotoFileName = '" + emp.PhotoFileName + @"'
+                              EmployeeName = '" + emp.EmployeeName + @"'
+                              , Department = '" + emp.Department + @"'
+                              , DateOfJoining = '" + emp.DateOfJoining + @"'
                               where EmployeeId = " + emp.EmployeeId + @"
                             ";
 
